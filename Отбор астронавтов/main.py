@@ -1,4 +1,4 @@
-from flask import Flask,  url_for, request
+from flask import Flask, url_for, request
 
 app = Flask('my web app')
 
@@ -56,22 +56,22 @@ def astrunaut_selection():
                         <input type="hidden" name="prof3" value="0">
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="prof4" name="prof3" value="физик-ядерщик">
+                        <input type="checkbox" class="form-check-input" id="prof4" name="prof4" value="физик-ядерщик">
                         <label class="form-check-label" for="prof4"> физик-ядерщик </label>
                         <input type="hidden" name="prof4" value="0">
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="prof5" name="prof3" value="строитель">
+                        <input type="checkbox" class="form-check-input" id="prof5" name="prof5" value="строитель">
                         <label class="form-check-label" for="prof5"> строитель </label>
                         <input type="hidden" name="prof5" value="0">
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="prof6" name="prof3" value="врач">
+                        <input type="checkbox" class="form-check-input" id="prof6" name="prof6" value="врач">
                         <label class="form-check-label" for="prof6"> врач </label>
                         <input type="hidden" name="prof6" value="0">
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="prof7" name="prof3" value="инженер">
+                        <input type="checkbox" class="form-check-input" id="prof7" name="prof7" value="инженер">
                         <label class="form-check-label" for="prof7"> инженер </label>
                         <input type="hidden" name="prof7" value="0">
                     </div>
@@ -111,7 +111,11 @@ def astrunaut_selection():
         print('file=', res.read())
         print('astro_sname=', request.form.get('astro_sname'))
         print('astro_name=', request.form.get('astro_name'))
-        print('profession=', request.form.get('profession'))
+        prof = []
+        for i in range(1, 8):
+            if request.form.get(f'prof{i}'):
+                prof.append(request.form.get(f'prof{i}'))
+        print('professions=', ', '.join(prof))
         print('sex=', request.form.get('sex'))
         print('about=', request.form.get('about'))
         print('stay=', request.form.get('stay'))
